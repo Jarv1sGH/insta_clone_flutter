@@ -45,7 +45,7 @@ class Post extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(Icons.favorite),
+                    child: Icon(Icons.favorite_border),
                   ),
                   Text('1.2M'),
                   SizedBox(
@@ -61,7 +61,7 @@ class Post extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(Icons.send),
+                    child: Icon(Icons.near_me_outlined),
                   ),
                   Text('6000'),
                   SizedBox(
@@ -72,20 +72,13 @@ class Post extends StatelessWidget {
                 ],
               ),
               Text(
-                'auroramusic this is going to be a really long sentence but this keybaord fucking sucks aaaaaaaa',
+                'Dummy text goes brrrrrrrrrrrrrrrrrrrrrrrrrr, lorem ipsum dolor sit is so 2019 ',
               ),
               Text('View all comments'),
               Text('16 hours ago'),
             ],
           ),
         ),
-
-        // const Padding(
-        //   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        //   child: Text(
-        //     'auroramusic this is going to be a really long sentence but this keybaord fucking sucks aaaaaaaa',
-        //   ),
-        // )
       ],
     );
   }

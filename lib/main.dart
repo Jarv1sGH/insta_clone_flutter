@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/screens/homepage.dart';
+import 'package:insta_clone/screens/home_screen.dart';
+import 'package:insta_clone/screens/main_screen.dart';
 
 void main() {
   runApp(const App());
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'InstagramClone',
-      home: Homepage(),
+      home: MainScreen(),
     );
   }
 }
