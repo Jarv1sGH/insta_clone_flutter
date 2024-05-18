@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/widgets/profile_picture.dart';
 
 class Post extends StatelessWidget {
   const Post({super.key});
@@ -6,27 +7,20 @@ class Post extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Row(
             children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: ClipOval(
-                  child: Image.asset(
-                    'assets/profile_pics/profile.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
+              ProfilePicture(
+                imageWidth: 35,
+                imageHeight: 35,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 8,
               ),
-              const Text('auroramusic'),
-              const Spacer(),
-              const Icon(Icons.more_vert_rounded),
+              Text('auroramusic'),
+              Spacer(),
+              Icon(Icons.more_vert_rounded),
             ],
           ),
         ),

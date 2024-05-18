@@ -4,6 +4,7 @@ import 'package:insta_clone/screens/fyp.dart';
 import 'package:insta_clone/screens/home_screen.dart';
 import 'package:insta_clone/screens/profile_screen.dart';
 import 'package:insta_clone/screens/reels_screen.dart';
+import 'package:insta_clone/widgets/profile_picture.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -48,37 +49,49 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_filled,
-              color: Colors.black,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.home_filled,
+                color: Colors.black,
+              ),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: Colors.black,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_box_outlined,
-              color: Colors.black,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.add_box_outlined,
+                color: Colors.black,
+              ),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.videocam,
-              color: Colors.black,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.video_call,
+                color: Colors.black,
+              ),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.black,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: ProfilePicture(imageWidth: 28, imageHeight: 28),
             ),
             label: '',
           ),
@@ -87,6 +100,7 @@ class _MainScreenState extends State<MainScreen> {
         onTap: onNavIconTap,
         selectedItemColor: Colors.blue,
         type: BottomNavigationBarType.fixed,
+        iconSize: 30,
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/widgets/profile_picture.dart';
 
 class Story extends StatelessWidget {
   const Story({super.key});
@@ -11,11 +12,13 @@ class Story extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-                border: Border.all(), borderRadius: BorderRadius.circular(999)),
+              border: Border.all(color: Colors.red, width: 3),
+              borderRadius: BorderRadius.circular(999),
+            ),
             height: 90,
             width: 90,
             child: const Center(
-              child: Text('ss'),
+              child: ProfilePicture(imageWidth: 80, imageHeight: 80),
             ),
           ),
           const Text('aurora'),

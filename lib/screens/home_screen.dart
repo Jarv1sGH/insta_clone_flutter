@@ -11,7 +11,9 @@ class HomeScreen extends StatelessWidget {
         children: [
           Container(
             height: 140,
-            // decoration: BoxDecoration(border: Border.all()),
+            decoration: const BoxDecoration(
+                border:
+                    Border(bottom: BorderSide(color: Colors.grey, width: 0.5))),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
