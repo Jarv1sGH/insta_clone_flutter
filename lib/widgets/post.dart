@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 
 class Post extends StatelessWidget {
@@ -8,7 +9,7 @@ class Post extends StatelessWidget {
     return Column(
       children: [
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: EdgeInsets.only(left: 8, right: 8, top: 0, bottom: 8),
           child: Row(
             children: [
               ProfilePicture(
@@ -39,7 +40,7 @@ class Post extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(Icons.favorite_border),
+                    child: Icon(CustomIcons.heart),
                   ),
                   Text('1.2M'),
                   SizedBox(
@@ -47,7 +48,7 @@ class Post extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(Icons.mode_comment_outlined),
+                    child: Icon(CustomIcons.comment),
                   ),
                   Text('20'),
                   SizedBox(
@@ -55,14 +56,14 @@ class Post extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(Icons.near_me_outlined),
+                    child: Icon(CustomIcons.send),
                   ),
                   Text('6000'),
                   SizedBox(
                     width: 12,
                   ),
                   Spacer(),
-                  Icon(Icons.bookmark_add_outlined),
+                  Icon(CustomIcons.save),
                 ],
               ),
               Text(

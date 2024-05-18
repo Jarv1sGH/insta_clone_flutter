@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/screens/create_post_screen.dart';
 import 'package:insta_clone/screens/fyp.dart';
 import 'package:insta_clone/screens/home_screen.dart';
@@ -33,15 +35,20 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Instagram'),
+        title: Text(
+          'Instagram',
+          style: GoogleFonts.getFont('Lobster Two', fontSize: 28),
+        ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.favorite),
+            icon: const Icon(CustomIcons.heart),
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.chat_rounded),
+            icon: const Icon(
+              CustomIcons.messenger,
+            ),
           ),
         ],
       ),
@@ -72,7 +79,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: Padding(
               padding: EdgeInsets.only(top: 10),
               child: Icon(
-                Icons.add_box_outlined,
+                CustomIcons.addsquare,
                 color: Colors.black,
               ),
             ),
@@ -82,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: Padding(
               padding: EdgeInsets.only(top: 10),
               child: Icon(
-                Icons.video_call,
+                CustomIcons.reels,
                 color: Colors.black,
               ),
             ),

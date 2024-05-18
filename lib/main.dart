@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/screens/home_screen.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:insta_clone/screens/main_screen.dart';
 
 void main() {
@@ -11,6 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      // theme: theme,
       title: 'InstagramClone',
       home: MainScreen(),
     );

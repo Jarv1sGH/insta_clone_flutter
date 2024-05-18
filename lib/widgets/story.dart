@@ -10,18 +10,48 @@ class Story extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.red, width: 3),
-              borderRadius: BorderRadius.circular(999),
-            ),
-            height: 90,
-            width: 90,
-            child: const Center(
-              child: ProfilePicture(imageWidth: 80, imageHeight: 80),
-            ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [
+                      Colors.yellowAccent,
+                      Colors.red,
+                      Colors.purple,
+                    ],
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.centerRight,
+                  ),
+                  borderRadius: BorderRadius.circular(999),
+                ),
+              ),
+              Container(
+                height: 83,
+                width: 83,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: Center(
+                  child: Container(
+                    height: 78,
+                    width: 78,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                    child:
+                        const ProfilePicture(imageWidth: 70, imageHeight: 70),
+                  ),
+                ),
+              ),
+            ],
           ),
-          const Text('aurora'),
+          const SizedBox(height: 2),
+          const Text('auroramusic'),
         ],
       ),
     );
