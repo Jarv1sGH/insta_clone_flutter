@@ -1,76 +1,112 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/custom_icons_icons.dart';
+import 'package:insta_clone/widgets/mediaCarousel/media_carousel.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 
 class Post extends StatelessWidget {
-  const Post({super.key});
+  Post({super.key});
+
+  final List<String> imgList = [
+    'assets/profile_pics/profile.png',
+    'assets/posts/post.png',
+    'assets/posts/post.png',
+    'assets/profile_pics/profile.png',
+    'assets/posts/post.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 8, right: 8, top: 0, bottom: 8),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8, top: 0, bottom: 8),
           child: Row(
             children: [
-              ProfilePicture(
+              const ProfilePicture(
                 imageWidth: 35,
                 imageHeight: 35,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
-              Text('auroramusic'),
-              Spacer(),
-              Icon(Icons.more_vert_rounded),
+              const Text('auroramusic'),
+              const Spacer(),
+              InkWell(
+                onTap: () {},
+                child: const Icon(Icons.more_vert_rounded),
+              )
             ],
           ),
         ),
-        Image.asset(
-          'assets/posts/post.png',
-          width: double.infinity,
+        MediaCarousel(
+          mediaLength: imgList.length,
+          imgList: imgList,
         ),
-        // Add Scrolling dots
-
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        Row(
+          children: [
+            IconButton(
+              // style: ButtonStyle(),
+              onPressed: () {},
+              icon: const Icon(CustomIcons.heart),
+              visualDensity: VisualDensity.compact,
+            ),
+            const Text('1.2M'),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(CustomIcons.comment),
+              visualDensity: VisualDensity.compact,
+            ),
+            const Text('20'),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(CustomIcons.send),
+              visualDensity: VisualDensity.compact,
+            ),
+            const Text('6000'),
+            const Spacer(),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(CustomIcons.save),
+              visualDensity: VisualDensity.compact,
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
+          child: Row(
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(CustomIcons.heart),
-                  ),
-                  Text('1.2M'),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(CustomIcons.comment),
-                  ),
-                  Text('20'),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(CustomIcons.send),
-                  ),
-                  Text('6000'),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  Spacer(),
-                  Icon(CustomIcons.save),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text.rich(TextSpan(children: [
+                      TextSpan(
+                        text: 'auroramusic',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                          text:
+                              ' Caption goes here eeeeeeeeee hippity hoppity hippity hoppity hippity hoppity')
+                    ])),
+                    InkWell(
+                      onTap: () {},
+                      child: const Text(
+                        'View all comments',
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: const Text(
+                        '16 hours ago',
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text(
-                'Dummy text goes brrrrrrrrrrrrrrrrrrrrrrrrrr, lorem ipsum dolor sit is so 2019 ',
-              ),
-              Text('View all comments'),
-              Text('16 hours ago'),
             ],
           ),
         ),

@@ -4,6 +4,6 @@ class ForYouScreen extends StatelessWidget {
   const ForYouScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Text('This is For you page');
+    return const Text('abcd');
   }
 }

@@ -28,8 +28,9 @@ class HomeScreen extends StatelessWidget {
           ),
           ...List.generate(
             10,
-            (index) => const Padding(
-                padding: EdgeInsets.symmetric(vertical: 10), child: Post()),
+            (index) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Post()),
           )
         ],
       ),
