@@ -43,8 +43,11 @@ class Story extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(999),
                     ),
-                    child:
-                        const ProfilePicture(imageWidth: 70, imageHeight: 70),
+                    child: const ProfilePicture(
+                      imageWidth: 70,
+                      imageHeight: 70,
+                      imagePath: 'assets/profile_pics/profile.png',
+                    ),
                   ),
                 ),
               ),

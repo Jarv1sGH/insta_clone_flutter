@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/custom_icons_icons.dart';
+import 'package:insta_clone/models/post_model.dart';
 import 'package:insta_clone/widgets/mediaCarousel/media_carousel.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
+import 'package:intl/intl.dart';
 
 class Post extends StatelessWidget {
-  Post({super.key});
+  Post({super.key, required this.post});
 
   final List<String> imgList = [
     'assets/profile_pics/profile.png',
@@ -13,7 +15,7 @@ class Post extends StatelessWidget {
     'assets/profile_pics/profile.png',
     'assets/posts/post.png',
   ];
-
+  final PostModel post;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,14 +24,16 @@ class Post extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8, top: 0, bottom: 8),
           child: Row(
             children: [
-              const ProfilePicture(
+              ProfilePicture(
                 imageWidth: 35,
                 imageHeight: 35,
+                imagePath: post.profileImg,
               ),
               const SizedBox(
                 width: 8,
               ),
-              const Text('auroramusic'),
+              Text(post.username,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
               const Spacer(),
               InkWell(
                 onTap: () {},
@@ -39,30 +43,29 @@ class Post extends StatelessWidget {
           ),
         ),
         MediaCarousel(
-          mediaLength: imgList.length,
-          imgList: imgList,
+          mediaLength: post.media.length,
+          imgList: post.media,
         ),
         Row(
           children: [
             IconButton(
-              // style: ButtonStyle(),
               onPressed: () {},
               icon: const Icon(CustomIcons.heart),
               visualDensity: VisualDensity.compact,
             ),
-            const Text('1.2M'),
+            Text(NumberFormat.compact().format(post.numOfLikes)),
             IconButton(
               onPressed: () {},
               icon: const Icon(CustomIcons.comment),
               visualDensity: VisualDensity.compact,
             ),
-            const Text('20'),
+            Text(NumberFormat.compact().format(post.numOfComments)),
             IconButton(
               onPressed: () {},
               icon: const Icon(CustomIcons.send),
               visualDensity: VisualDensity.compact,
             ),
-            const Text('6000'),
+            Text(NumberFormat.compact().format(post.numOfShares)),
             const Spacer(),
             IconButton(
               onPressed: () {},
@@ -81,14 +84,14 @@ class Post extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text.rich(TextSpan(children: [
+                    Text.rich(TextSpan(children: [
                       TextSpan(
-                        text: 'auroramusic',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        text: '${post.username} ',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
-                          text:
-                              ' Caption goes here eeeeeeeeee hippity hoppity hippity hoppity hippity hoppity')
+                        text: post.caption,
+                      )
                     ])),
                     InkWell(
                       onTap: () {},
@@ -99,9 +102,9 @@ class Post extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {},
-                      child: const Text(
-                        '16 hours ago',
-                        style: TextStyle(color: Colors.black54),
+                      child: Text(
+                        post.time,
+                        style: const TextStyle(color: Colors.black54),
                       ),
                     ),
                   ],

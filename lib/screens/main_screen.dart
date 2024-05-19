@@ -98,7 +98,11 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: ProfilePicture(imageWidth: 30, imageHeight: 30),
+              child: ProfilePicture(
+                imageWidth: 30,
+                imageHeight: 30,
+                imagePath: 'assets/profile_pics/profile.png',
+              ),
             ),
             label: '',
           ),
