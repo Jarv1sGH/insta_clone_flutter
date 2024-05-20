@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/models/post_model.dart';
+import 'package:insta_clone/widgets/Post/caption_row.dart';
 import 'package:insta_clone/widgets/mediaCarousel/media_carousel.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 import 'package:intl/intl.dart';
@@ -16,66 +15,77 @@ class Post extends StatefulWidget {
   State<Post> createState() => _PostState();
 }
 
-class _PostState extends State<Post> with SingleTickerProviderStateMixin {
-  final List<String> imgList = [
-    'assets/profile_pics/profile.png',
-    'assets/posts/post.png',
-    'assets/posts/post.png',
-    'assets/profile_pics/profile.png',
-    'assets/posts/post.png',
-  ];
-  late AnimationController _animationController;
-  late Animation<double> _scaleAnimation;
+class _PostState extends State<Post> with TickerProviderStateMixin {
+  late AnimationController _likeAnimationController;
+  late Animation<double> _likeScaleAnimation;
+  late AnimationController _saveAnimationController;
+  late Animation<double> _saveScaleAnimation;
   int numOfLikes = 0;
   bool _isLiked = false;
+  bool _isSaved = false;
   bool _isHeartVisible = false;
-  @override
+
   @override
   void initState() {
     super.initState();
     numOfLikes = widget.post.numOfLikes;
-    _animationController = AnimationController(
+    _likeAnimationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 100),
     );
 
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.2).animate(
+    _likeScaleAnimation = Tween<double>(begin: 1.0, end: 1.2).animate(
       CurvedAnimation(
-        parent: _animationController,
+        parent: _likeAnimationController,
         curve: Curves.easeInOut,
       ),
     )..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          _animationController.reverse();
+          _likeAnimationController.reverse();
+        }
+      });
+    _saveAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 100),
+    );
+    _saveScaleAnimation = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(
+        parent: _saveAnimationController,
+        curve: Curves.easeInOut,
+      ),
+    )..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _saveAnimationController.reverse();
         }
       });
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _likeAnimationController.dispose();
+    _saveAnimationController.dispose();
     super.dispose();
   }
 
-  void _onIconPressed(bool doubleTap) {
+  void _onLikeIconPressed(bool doubleTap) {
     setState(() {
       // if called from double tap just shows the animation if the post is already liked else
       // calls the animation and increase the like count.
       if (doubleTap) {
         if (_isLiked) {
-          _animationController.forward();
+          _likeAnimationController.forward();
           return;
         } else {
           _isLiked = true;
-          _animationController.forward();
+          _likeAnimationController.forward();
           numOfLikes++;
         }
       } else {
         if (_isLiked) {
-          _animationController.reverse();
+          _likeAnimationController.reverse();
           numOfLikes--;
         } else {
-          _animationController.forward();
+          _likeAnimationController.forward();
           numOfLikes++;
         }
         _isLiked = !_isLiked;
@@ -86,8 +96,8 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
   void _doubleTapHandler() {
     setState(() {
       _isHeartVisible = true;
-      _onIconPressed(true);
-      _animationController.forward();
+      _onLikeIconPressed(true);
+      _likeAnimationController.forward();
       Future.delayed(const Duration(milliseconds: 500), () {
         setState(() {
           _isHeartVisible = false;
@@ -100,6 +110,7 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Top row with username and options
         Padding(
           padding: const EdgeInsets.only(left: 8, right: 8, top: 0, bottom: 8),
           child: Row(
@@ -122,52 +133,57 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
             ],
           ),
         ),
+
+        // Images & video
         InkWell(
-            onDoubleTap: _doubleTapHandler,
-            child: Stack(
-              children: [
-                MediaCarousel(
-                  mediaLength: widget.post.media.length,
-                  imgList: widget.post.media,
-                ),
-                SizedBox(
-                  height: 400,
-                  child: Center(
-                    child: AnimatedOpacity(
-                      opacity: _isHeartVisible ? 1 : 0,
-                      duration: const Duration(milliseconds: 100),
-                      child: AnimatedBuilder(
-                          animation: _animationController,
-                          builder: (context, child) {
-                            return Transform.scale(
-                              scale: _scaleAnimation.value,
-                              child: const Icon(
-                                size: 90,
-                                CustomIcons.heartSolid,
-                                color: Colors.white,
-                              ),
-                            );
-                          }),
-                    ),
+          onDoubleTap: _doubleTapHandler,
+          child: Stack(
+            children: [
+              MediaCarousel(
+                mediaLength: widget.post.media.length,
+                imgList: widget.post.media,
+              ),
+              SizedBox(
+                height: 400,
+                child: Center(
+                  child: AnimatedOpacity(
+                    opacity: _isHeartVisible ? 1 : 0,
+                    duration: const Duration(milliseconds: 100),
+                    child: AnimatedBuilder(
+                        animation: _likeAnimationController,
+                        builder: (context, child) {
+                          return Transform.scale(
+                            scale: _likeScaleAnimation.value,
+                            child: const Icon(
+                              size: 90,
+                              CustomIcons.heartSolid,
+                              color: Colors.white,
+                            ),
+                          );
+                        }),
                   ),
                 ),
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
+
+        // Row with likes , comment and share icons
         Row(
           children: [
             IconButton(
               onPressed: () {
-                _onIconPressed(false);
+                _onLikeIconPressed(false);
               },
               style: ButtonStyle(
                   iconColor: _isLiked
                       ? MaterialStateProperty.all<Color>(Colors.red)
                       : null),
               icon: AnimatedBuilder(
-                animation: _animationController,
+                animation: _likeAnimationController,
                 builder: (context, child) {
                   return Transform.scale(
-                    scale: _scaleAnimation.value,
+                    scale: _likeScaleAnimation.value,
                     child: Icon(
                       _isLiked ? CustomIcons.heartSolid : CustomIcons.heart,
                       color: _isLiked ? Colors.red : null,
@@ -192,51 +208,35 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
             Text(NumberFormat.compact().format(widget.post.numOfShares)),
             const Spacer(),
             IconButton(
-              onPressed: () {},
-              icon: const Icon(CustomIcons.save),
+              onPressed: () {
+                setState(() {
+                  if (_isSaved) {
+                    _saveAnimationController.reverse();
+                  } else {
+                    _saveAnimationController.forward();
+                  }
+                  _isSaved = !_isSaved;
+                });
+              },
+              icon: AnimatedBuilder(
+                  animation: _saveAnimationController,
+                  builder: (context, child) {
+                    return Transform.scale(
+                      scale: _saveScaleAnimation.value,
+                      child: Icon(_isSaved ? Icons.bookmark : CustomIcons.save),
+                    );
+                  }),
               visualDensity: VisualDensity.compact,
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text.rich(TextSpan(children: [
-                      TextSpan(
-                        text: '${widget.post.username} ',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: widget.post.caption,
-                      )
-                    ])),
-                    InkWell(
-                      onTap: () {},
-                      child: const Text(
-                        'View all comments',
-                        style: TextStyle(color: Colors.black54),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        widget.post.time,
-                        style: const TextStyle(color: Colors.black54),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+
+        // Row with caption comments and upload details
+        CaptionRow(
+          caption: widget.post.caption,
+          time: widget.post.time,
+          username: widget.post.username,
+        )
       ],
     );
   }
