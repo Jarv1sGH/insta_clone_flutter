@@ -79,7 +79,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: Padding(
               padding: EdgeInsets.only(top: 10),
               child: Icon(
-                CustomIcons.addsquare,
+                CustomIcons.addSquare,
                 color: Colors.black,
               ),
             ),

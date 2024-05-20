@@ -5,7 +5,7 @@ const postData = [
     'auroramusic',
     'assets/profile_pics/profile.png',
     'Norway',
-    632321,
+    632,
     420,
     69,
     'I cannot think of what to write here soooooo',
