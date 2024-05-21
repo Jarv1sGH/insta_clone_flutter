@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/models/post_model.dart';
 import 'package:insta_clone/widgets/Post/caption_row.dart';
+import 'package:insta_clone/widgets/Post/post_options.dart';
 import 'package:insta_clone/widgets/mediaCarousel/media_carousel.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 import 'package:intl/intl.dart';
@@ -106,6 +107,18 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
     });
   }
 
+  void _showOptions() {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (ctx) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.61,
+            child: PostOptions(),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -127,7 +140,7 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
                   style: const TextStyle(fontWeight: FontWeight.bold)),
               const Spacer(),
               InkWell(
-                onTap: () {},
+                onTap: _showOptions,
                 child: const Icon(Icons.more_vert_rounded),
               )
             ],
@@ -177,7 +190,7 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
               },
               style: ButtonStyle(
                   iconColor: _isLiked
-                      ? MaterialStateProperty.all<Color>(Colors.red)
+                      ? WidgetStateProperty.all<Color>(Colors.red)
                       : null),
               icon: AnimatedBuilder(
                 animation: _likeAnimationController,
