@@ -5,7 +5,7 @@ import 'package:insta_clone/widgets/Post/post_option_icon.dart';
 class PostOptions extends StatelessWidget {
   PostOptions({super.key});
   final List<Map<String, dynamic>> options = [
-    {'icon': Icons.info_outline, 'label': 'Why  you\'re seeing this post'},
+    {'icon': Icons.info_outline, 'label': 'Why you\'re seeing this post'},
     {'icon': Icons.hide_image_outlined, 'label': 'Hide'},
     {'icon': Icons.person, 'label': 'About this account'},
     {'icon': Icons.report_gmailerrorred, 'label': 'Report'},
@@ -73,11 +73,17 @@ class PostOptions extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Icon(
+                        color: option['label'] == 'Report' ? Colors.red : null,
                         option['icon'],
                         size: 28,
                       ),
                     ),
-                    Text(option['label']),
+                    Text(
+                      option['label'],
+                      style: TextStyle(
+                        color: option['label'] == 'Report' ? Colors.red : null,
+                      ),
+                    ),
                   ],
                 ),
               );

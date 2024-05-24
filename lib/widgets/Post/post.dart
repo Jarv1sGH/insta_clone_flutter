@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/models/post_model.dart';
 import 'package:insta_clone/widgets/Post/caption_row.dart';
+import 'package:insta_clone/widgets/Post/Comment/comments.dart';
 import 'package:insta_clone/widgets/Post/post_options.dart';
 import 'package:insta_clone/widgets/mediaCarousel/media_carousel.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
@@ -119,6 +120,20 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
         });
   }
 
+  void _showComment() {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (ctx) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.95,
+            child: Comments(
+              comments: widget.post.comments,
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -208,11 +223,11 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
             ),
             Text(NumberFormat.compact().format(numOfLikes)),
             IconButton(
-              onPressed: () {},
+              onPressed: _showComment,
               icon: const Icon(CustomIcons.comment),
               visualDensity: VisualDensity.compact,
             ),
-            Text(NumberFormat.compact().format(widget.post.numOfComments)),
+            Text(NumberFormat.compact().format(widget.post.comments.length)),
             IconButton(
               onPressed: () {},
               icon: const Icon(CustomIcons.send),
