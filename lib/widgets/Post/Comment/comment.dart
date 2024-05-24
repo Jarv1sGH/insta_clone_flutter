@@ -25,7 +25,7 @@ class _CommentState extends State<Comment> with SingleTickerProviderStateMixin {
     super.initState();
     _likeAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 150),
     );
 
     _likeScaleAnimation = Tween<double>(begin: 1.0, end: 1.2).animate(
@@ -49,7 +49,7 @@ class _CommentState extends State<Comment> with SingleTickerProviderStateMixin {
   void _commentLikeHandler() {
     setState(() {
       if (_isLiked) {
-        _likeAnimationController.reverse();
+        _likeAnimationController.forward();
         _numOfLikes--;
       } else {
         _likeAnimationController.forward();

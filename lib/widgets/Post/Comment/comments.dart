@@ -11,7 +11,8 @@ class Comments extends StatefulWidget {
   State<Comments> createState() => _CommentsState();
 }
 
-class _CommentsState extends State<Comments> with TickerProviderStateMixin {
+class _CommentsState extends State<Comments>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _commentController = TextEditingController();
   late AnimationController _animationController;
   late Animation<double> _paddingAnimation;
@@ -41,10 +42,6 @@ class _CommentsState extends State<Comments> with TickerProviderStateMixin {
     _paddingAnimation = Tween<double>(begin: 0, end: 0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
     );
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _updatePadding();
-    });
   }
 
   void _updatePadding() {
@@ -69,7 +66,7 @@ class _CommentsState extends State<Comments> with TickerProviderStateMixin {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Changes padding (animation) when something like keyboard shows
+    // Changes padding (animation) when something like keyboard shows on the screen
     _updatePadding();
   }
 

@@ -71,23 +71,20 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
 
   void _onLikeIconPressed(bool doubleTap) {
     setState(() {
+      _likeAnimationController.forward();
       // if called from double tap just shows the animation if the post is already liked else
       // calls the animation and increase the like count.
       if (doubleTap) {
         if (_isLiked) {
-          _likeAnimationController.forward();
           return;
         } else {
           _isLiked = true;
-          _likeAnimationController.forward();
           numOfLikes++;
         }
       } else {
         if (_isLiked) {
-          _likeAnimationController.reverse();
           numOfLikes--;
         } else {
-          _likeAnimationController.forward();
           numOfLikes++;
         }
         _isLiked = !_isLiked;
