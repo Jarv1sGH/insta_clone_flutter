@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/custom_icons_icons.dart';
+import 'package:insta_clone/widgets/profile_picture.dart';
+import 'package:insta_clone/widgets/reel_icons.dart';
 import 'package:video_player/video_player.dart';
 
 class ReelPlayer extends StatefulWidget {
@@ -38,45 +41,102 @@ class _ReelPlayerState extends State<ReelPlayer> with TickerProviderStateMixin {
     });
   }
 
+  final List<Map<String, dynamic>> reelIcons = [
+    {'icon': CustomIcons.heart, 'label': '540k'},
+    {'icon': CustomIcons.comment, 'label': '988'},
+    {'icon': CustomIcons.send, 'label': '540'},
+    {'icon': Icons.more_vert_rounded},
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        FutureBuilder(
-          future: _initializeVideoPlayerFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return AspectRatio(
-                aspectRatio: _videoPlayerController.value.aspectRatio,
-                child: InkWell(
-                  onTap: _toggleAudio,
-                  onDoubleTap: () {},
-                  child: Stack(
-                    children: [
-                      VideoPlayer(_videoPlayerController),
-                      const SizedBox(
-                        width: double.infinity,
-                        height: double.infinity,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 4),
-                          child: Column(
-                            children: [],
+    return FutureBuilder(
+      future: _initializeVideoPlayerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return AspectRatio(
+            aspectRatio: _videoPlayerController.value.aspectRatio,
+            child: InkWell(
+              onTap: _toggleAudio,
+              onDoubleTap: () {},
+              child: Stack(
+                children: [
+                  VideoPlayer(_videoPlayerController),
+                  SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                      ),
+                      child: Row(
+                        children: [
+                          const Expanded(
+                            flex: 9,
+                            child: SizedBox(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "Column 1 Content",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-      ],
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  ...reelIcons.map((item) {
+                                    return ReelIcons(
+                                        icon: item['icon'],
+                                        label: item['label'] ?? item['label']);
+                                  }),
+                                  Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(color: Colors.white),
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(2),
+                                      ),
+                                    ),
+                                    child: const Center(
+                                      child: ProfilePicture(
+                                        imageWidth: 27,
+                                        imageHeight: 27,
+                                        rounded: false,
+                                        imagePath:
+                                            'assets/profile_pics/profile.png',
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
