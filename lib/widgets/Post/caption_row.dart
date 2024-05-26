@@ -6,11 +6,12 @@ class CaptionRow extends StatelessWidget {
     required this.caption,
     required this.time,
     required this.username,
+    required this.showComments,
   });
-
   final String username;
   final String caption;
   final String time;
+  final void Function() showComments;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,12 +34,14 @@ class CaptionRow extends StatelessWidget {
                   )
                 ])),
                 InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    'View all comments',
-                    style: TextStyle(color: Colors.black54),
-                  ),
-                ),
+                    onTap: () {},
+                    child: InkWell(
+                      onTap: showComments,
+                      child: const Text(
+                        'View all comments',
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                    )),
                 InkWell(
                   onTap: () {},
                   child: Text(

@@ -261,6 +261,7 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
           caption: widget.post.caption,
           time: widget.post.time,
           username: widget.post.username,
+          showComments: _showComment,
         )
       ],
     );

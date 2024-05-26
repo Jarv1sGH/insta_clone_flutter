@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const ForYouScreen(),
     const CreatePostScreen(),
-    const ReelsScreen(),
+    ReelsScreen(),
     const ProfileScreen()
   ];
 
@@ -34,24 +34,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Instagram',
-          style: GoogleFonts.getFont('Lobster Two', fontSize: 28),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(CustomIcons.heart),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              CustomIcons.messenger,
-            ),
-          ),
-        ],
-      ),
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const [
