@@ -14,40 +14,42 @@ class ReelsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-            child: Stack(
-      children: [
-        PageView.builder(
-          itemCount: videoUrls.length,
-          scrollDirection: Axis.vertical,
-          itemBuilder: (ctx, index) {
-            return ReelPlayer(
-              videoUrl: videoUrls[index],
-            );
-          },
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 8, top: 4, right: 8),
-          child: Row(
-            children: [
-              Text(
-                'Reels',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            PageView.builder(
+              itemCount: videoUrls.length,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (ctx, index) {
+                return ReelPlayer(
+                  videoUrl: videoUrls[index],
+                );
+              },
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 8, top: 4, right: 8),
+              child: Row(
+                children: [
+                  Text(
+                    'Reels',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Spacer(),
+                  Icon(
+                    Icons.camera_alt_outlined,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ],
               ),
-              Spacer(),
-              Icon(
-                Icons.camera_alt_outlined,
-                color: Colors.white,
-                size: 30,
-              )
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
-    )));
+      ),
+    );
   }
 }
