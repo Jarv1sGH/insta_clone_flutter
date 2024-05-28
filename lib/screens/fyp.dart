@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/widgets/reel_player.dart';
+import 'package:insta_clone/widgets/ReelsPlayer/reel_player.dart';
 
 class ForYouScreen extends StatelessWidget {
   const ForYouScreen({super.key});

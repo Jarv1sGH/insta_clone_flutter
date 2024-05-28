@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/custom_icons_icons.dart';
+import 'package:insta_clone/widgets/ReelsPlayer/reel_info.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
-import 'package:insta_clone/widgets/reel_icons.dart';
+import 'package:insta_clone/widgets/ReelsPlayer/reel_icons.dart';
 import 'package:video_player/video_player.dart';
 
 class ReelPlayer extends StatefulWidget {
@@ -74,14 +75,10 @@ class _ReelPlayerState extends State<ReelPlayer> with TickerProviderStateMixin {
                           const Expanded(
                             flex: 9,
                             child: SizedBox(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    "Column 1 Content",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
+                              child: ReelInfo(
+                                imageUrl: 'assets/profile_pics/profile.png',
+                                username: 'philomenacunk',
+                                caption: 'philomena on beethoven...',
                               ),
                             ),
                           ),
