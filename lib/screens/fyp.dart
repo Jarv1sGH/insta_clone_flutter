@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/widgets/ReelsPlayer/reel_player.dart';
 
 class ForYouScreen extends StatelessWidget {
   const ForYouScreen({super.key});
@@ -8,9 +7,7 @@ class ForYouScreen extends StatelessWidget {
     return const SizedBox(
       width: double.infinity,
       height: double.infinity,
-      child: Center(
-          // child: ReelPlayer(),
-          ),
+      child: Text("data"),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:insta_clone/widgets/Post/Comment/comments.dart';
 import 'package:insta_clone/widgets/Post/post_options.dart';
 import 'package:insta_clone/widgets/mediaCarousel/media_carousel.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
+import 'package:insta_clone/widgets/reusableWidgets/overlay_heart.dart';
 import 'package:intl/intl.dart';
 
 class Post extends StatefulWidget {
@@ -168,27 +169,12 @@ class _PostState extends State<Post> with TickerProviderStateMixin {
                 mediaLength: widget.post.media.length,
                 imgList: widget.post.media,
               ),
-              SizedBox(
-                height: 400,
-                child: Center(
-                  child: AnimatedOpacity(
-                    opacity: _isHeartVisible ? 1 : 0,
-                    duration: const Duration(milliseconds: 100),
-                    child: AnimatedBuilder(
-                        animation: _likeAnimationController,
-                        builder: (context, child) {
-                          return Transform.scale(
-                            scale: _likeScaleAnimation.value,
-                            child: const Icon(
-                              size: 90,
-                              CustomIcons.heartSolid,
-                              color: Colors.white,
-                            ),
-                          );
-                        }),
-                  ),
-                ),
-              ),
+              OverlayHeart(
+                isHeartVisible: _isHeartVisible,
+                likeAnimationController: _likeAnimationController,
+                likeScaleAnimation: _likeScaleAnimation,
+                boxHeight: 400,
+              )
             ],
           ),
         ),

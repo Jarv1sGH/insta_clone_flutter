@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/data/reels_data.dart';
 import 'package:insta_clone/widgets/ReelsPlayer/reel_player.dart';
 
 class ReelsScreen extends StatelessWidget {
-  ReelsScreen({super.key});
-  final List<String> videoUrls = [
-    'assets/posts/reels/reel.mp4',
-    'assets/posts/reels/reel2.mp4',
-    'assets/posts/reels/reel.mp4',
-    'assets/posts/reels/reel2.mp4',
-    'assets/posts/reels/reel.mp4',
-    'assets/posts/reels/reel2.mp4',
-  ];
+  const ReelsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +12,11 @@ class ReelsScreen extends StatelessWidget {
         child: Stack(
           children: [
             PageView.builder(
-              itemCount: videoUrls.length,
+              itemCount: reels.length,
               scrollDirection: Axis.vertical,
               itemBuilder: (ctx, index) {
                 return ReelPlayer(
-                  videoUrl: videoUrls[index],
+                  reel: reels[index],
                 );
               },
             ),

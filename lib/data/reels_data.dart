@@ -1,0 +1,133 @@
+import 'package:insta_clone/models/comment_model.dart';
+import 'package:insta_clone/models/post_model.dart';
+
+const reels = [
+  PostModel(
+    username: 'philomenacunk',
+    profileImg: 'assets/profile_pics/profile.png',
+    numOfLikes: 232342,
+    numOfShares: 36,
+    caption: 'Carpenters amirite ',
+    time: '22 h ago',
+    media: ['assets/posts/reels/reel.mp4'],
+    comments: [
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'beethoven is overrated',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+    ],
+  ),
+  PostModel(
+    username: 'philomenacunk',
+    profileImg: 'assets/profile_pics/profile.png',
+    numOfLikes: 783,
+    numOfShares: 36,
+    caption: 'philomena on beethoven...',
+    time: '22 h ago',
+    media: ['assets/posts/reels/reel2.mp4'],
+    comments: [
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'beethoven is overrated',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+    ],
+  ),
+  PostModel(
+    username: 'philomenacunk',
+    profileImg: 'assets/profile_pics/profile.png',
+    numOfLikes: 235,
+    numOfShares: 36,
+    caption: 'hippity hoppity',
+    time: '22 h ago',
+    media: ['assets/posts/reels/reel.mp4'],
+    comments: [
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'beethoven is overrated',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+    ],
+  ),
+  PostModel(
+    username: 'philomenacunk',
+    profileImg: 'assets/profile_pics/profile.png',
+    numOfLikes: 235,
+    numOfShares: 36,
+    caption: 'philomena on beethoven...',
+    time: '22 h ago',
+    media: ['assets/posts/reels/reel2.mp4'],
+    comments: [
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'beethoven is overrated',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+      CommentModel(
+        'hellokitty',
+        'assets/profile_pics/profile2.png',
+        44,
+        '1h ago',
+        'damnnnnn',
+      ),
+    ],
+  ),
+];
