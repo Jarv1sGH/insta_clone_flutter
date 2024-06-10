@@ -2,7 +2,7 @@ name: insta_clone
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.4 <4.0.0'
+  sdk: ">=3.3.4 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -55,7 +54,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -68,6 +66,46 @@ flutter:
     - assets/posts/post.png
     - assets/posts/reels/reel.mp4
     - assets/posts/reels/reel2.mp4
+    - assets/posts/post1/media1.jpg
+    - assets/posts/post2/media1.jpg
+    - assets/posts/post3/media1.jpg
+    - assets/posts/post4/media1.jpg
+    - assets/posts/post4/media2.jpg
+    - assets/posts/post5/media1.jpg
+    - assets/posts/post6/media1.jpg
+    - assets/posts/post6/media2.jpg
+    - assets/posts/post6/media3.jpg
+    - assets/posts/post7/media1.jpg
+    - assets/posts/post7/media2.jpg
+    - assets/posts/post8/media1.jpg
+    - assets/posts/post9/media1.jpg
+    - assets/posts/post10/media1.jpg
+    - assets/posts/reels/reel.mp4
+    - assets/posts/reels/reel1.mp4
+    - assets/posts/reels/reel2.mp4
+    - assets/posts/reels/reel3.mp4
+    - assets/posts/reels/reel4.mp4
+    - assets/posts/reels/reel5.mp4
+    - assets/posts/reels/reel6.mp4
+    - assets/posts/reels/reel7.mp4
+    - assets/posts/reels/reel8.mp4
+    - assets/posts/reels/reel9.mp4
+    - assets/posts/reels/reel10.mp4
+    - assets/posts/reels/reel11.mp4
+    - assets/posts/reels/reel12.mp4
+    - assets/posts/reels/reel13.mp4
+    - assets/posts/reels/reel14.mp4
+    - assets/posts/reels/reel15.mp4
+    - assets/posts/reels/reel16.mp4
+    - assets/posts/reels/reel17.mp4
+    - assets/posts/reels/reel18.mp4
+    - assets/posts/reels/reel19.mp4
+    - assets/posts/reels/reel20.mp4
+    - assets/posts/reels/reel21.mp4
+    - assets/posts/reels/reel22.mp4
+    - assets/posts/reels/reel23.mp4
+    - assets/posts/reels/reel24.mp4
+    - assets/posts/reels/reel25.mp4
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -81,8 +119,8 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-      - family: CustomIcons
-        fonts:
+    - family: CustomIcons
+      fonts:
         - asset: fonts/CustomIcons.ttf
   #   - family: Schyler
   #     fonts:

@@ -60,11 +60,12 @@ class _MediaCarouselState extends State<MediaCarousel>
             ],
           ),
         ),
-        PageIndicator(
-          tabController: _tabController,
-          currentPageIndex: _currentPageIndex,
-          onUpdateCurrentPageIndex: _updateCurrentPageIndex,
-        ),
+        if (widget.mediaLength > 1)
+          PageIndicator(
+            tabController: _tabController,
+            currentPageIndex: _currentPageIndex,
+            onUpdateCurrentPageIndex: _updateCurrentPageIndex,
+          ),
       ],
     );
   }

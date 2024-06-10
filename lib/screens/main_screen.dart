@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/screens/create_post_screen.dart';
 import 'package:insta_clone/screens/fyp.dart';
