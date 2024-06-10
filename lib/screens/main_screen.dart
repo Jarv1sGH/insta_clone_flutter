@@ -5,6 +5,7 @@ import 'package:insta_clone/screens/fyp.dart';
 import 'package:insta_clone/screens/home_screen.dart';
 import 'package:insta_clone/screens/profile_screen.dart';
 import 'package:insta_clone/screens/reels_screen.dart';
+import 'package:insta_clone/widgets/FYP/fyp_wrapper.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,7 +19,8 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const ForYouScreen(),
+    const FypWrapper(),
+    // const ForYouScreen(),
     const CreatePostScreen(),
     ReelsScreen(),
     const ProfileScreen()

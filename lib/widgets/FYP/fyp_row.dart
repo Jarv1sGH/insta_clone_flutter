@@ -3,12 +3,22 @@ import 'package:insta_clone/models/post_model.dart';
 import 'package:insta_clone/screens/explore.dart';
 import 'package:insta_clone/screens/reels_screen.dart';
 import 'package:insta_clone/widgets/FYP/fyp_reel.dart';
+// import 'package:insta_clone/widgets/FYP/floating_posts.dart';
 
 class FypRow extends StatelessWidget {
-  const FypRow({super.key, required this.index, required this.rowData});
+  const FypRow({
+    super.key,
+    required this.index,
+    required this.rowData,
+    required this.updateIsPressed,
+  });
   final int index;
   final List<PostModel> rowData;
-
+  final Function({
+    required bool isPressed,
+    required PostModel post,
+    required bool isReel,
+  }) updateIsPressed;
   void onPostTap(PostModel item, context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return Explore(post: item);
@@ -44,8 +54,21 @@ class FypRow extends StatelessWidget {
                           124, // Half of the height of the parent container - 1 for spacing
                       child: Stack(
                         children: [
-                          InkWell(
-                            onLongPress: () {},
+                          GestureDetector(
+                            onLongPress: () {
+                              updateIsPressed(
+                                isPressed: true,
+                                post: item,
+                                isReel: false,
+                              );
+                            },
+                            onLongPressEnd: (_) {
+                              updateIsPressed(
+                                isPressed: false,
+                                post: item,
+                                isReel: false,
+                              );
+                            },
                             onTap: () {
                               onPostTap(item, context);
                             },
@@ -72,13 +95,25 @@ class FypRow extends StatelessWidget {
         ),
         Expanded(
           child: SizedBox(
-            // color: Colors.black,
-            // decoration: BoxDecoration(border: Border.all()),
             width: double.infinity,
             height: 250,
             child: Padding(
                 padding: const EdgeInsets.all(1),
-                child: InkWell(
+                child: GestureDetector(
+                  onLongPress: () {
+                    updateIsPressed(
+                      isPressed: true,
+                      post: rowData[4],
+                      isReel: true,
+                    );
+                  },
+                  onLongPressEnd: (_) {
+                    updateIsPressed(
+                      isPressed: false,
+                      post: rowData[4],
+                      isReel: true,
+                    );
+                  },
                   onTap: () {
                     onReelTap(rowData[4], context);
                   },

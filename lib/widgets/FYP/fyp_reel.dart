@@ -33,7 +33,8 @@ class _FypReelState extends State<FypReel> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-        aspectRatio: _videoPlayerController.value.aspectRatio,
-        child: VideoPlayer(_videoPlayerController));
+      aspectRatio: _videoPlayerController.value.aspectRatio,
+      child: VideoPlayer(_videoPlayerController),
+    );
   }
 }

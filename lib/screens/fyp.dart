@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/models/post_model.dart';
 import 'package:insta_clone/widgets/FYP/fyp_row.dart';
 import 'package:insta_clone/data/fyp_data.dart';
 
 class ForYouScreen extends StatelessWidget {
-  const ForYouScreen({super.key});
+  const ForYouScreen({super.key, required this.updateIsPressed});
+  final Function({
+    required bool isPressed,
+    required PostModel post,
+    required bool isReel,
+  }) updateIsPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -40,9 +46,9 @@ class ForYouScreen extends StatelessWidget {
                   itemCount: fypData.length,
                   itemBuilder: (context, index) {
                     return FypRow(
-                      index: index,
-                      rowData: fypData[index],
-                    );
+                        index: index,
+                        rowData: fypData[index],
+                        updateIsPressed: updateIsPressed);
                   },
                 ),
               )
