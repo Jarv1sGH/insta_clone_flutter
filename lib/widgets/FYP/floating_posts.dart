@@ -5,7 +5,7 @@ import 'package:insta_clone/widgets/FYP/fyp_reel.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 import 'dart:ui';
 
-class FloatingPost extends StatefulWidget {
+class FloatingPost extends StatelessWidget {
   const FloatingPost({
     super.key,
     required this.post,
@@ -14,11 +14,6 @@ class FloatingPost extends StatefulWidget {
   final PostModel post;
   final bool isReel;
 
-  @override
-  State<FloatingPost> createState() => _FloatingPostState();
-}
-
-class _FloatingPostState extends State<FloatingPost> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,8 +27,9 @@ class _FloatingPostState extends State<FloatingPost> {
                 builder: (BuildContext context, BoxConstraints constraints) {
                   return ConstrainedBox(
                     constraints: BoxConstraints(
-                      maxHeight: constraints.maxHeight *
-                          0.9, // or any max height you prefer
+                      maxHeight: isReel
+                          ? constraints.maxHeight * 0.98
+                          : constraints.maxHeight * 0.8,
                     ),
                     child: Container(
                       decoration: const BoxDecoration(
@@ -59,11 +55,11 @@ class _FloatingPostState extends State<FloatingPost> {
                                   child: ProfilePicture(
                                     imageWidth: 30,
                                     imageHeight: 30,
-                                    imagePath: widget.post.profileImg,
+                                    imagePath: post.profileImg,
                                   ),
                                 ),
                                 Text(
-                                  widget.post.username,
+                                  post.username,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -71,9 +67,11 @@ class _FloatingPostState extends State<FloatingPost> {
                             ),
                           ),
                           Flexible(
-                            child: widget.isReel
-                                ? FypReel(reel: widget.post)
-                                : Image.asset(widget.post.media[0]),
+                            child: isReel
+                                ? FypReel(reel: post)
+                                : Image.asset(
+                                    post.media[0],
+                                  ),
                           ),
                           Container(
                             height: 50,

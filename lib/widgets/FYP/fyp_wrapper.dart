@@ -15,7 +15,7 @@ class _FypWrapperState extends State<FypWrapper> {
   bool isReel = false;
   PostModel? post;
 
-  void updateIsPressed(
+  void showFloatingPost(
       {required bool isPressed,
       required PostModel post,
       required bool isReel}) {
@@ -31,7 +31,7 @@ class _FypWrapperState extends State<FypWrapper> {
     return Stack(
       children: [
         ForYouScreen(
-          updateIsPressed: updateIsPressed,
+          showFloatingPost: showFloatingPost,
         ),
         if (isPressed == true && post != null)
           FloatingPost(

@@ -10,7 +10,7 @@ class FypRow extends StatelessWidget {
     super.key,
     required this.index,
     required this.rowData,
-    required this.updateIsPressed,
+    required this.showFloatingPost,
   });
   final int index;
   final List<PostModel> rowData;
@@ -18,7 +18,7 @@ class FypRow extends StatelessWidget {
     required bool isPressed,
     required PostModel post,
     required bool isReel,
-  }) updateIsPressed;
+  }) showFloatingPost;
   void onPostTap(PostModel item, context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return Explore(post: item);
@@ -56,14 +56,14 @@ class FypRow extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onLongPress: () {
-                              updateIsPressed(
+                              showFloatingPost(
                                 isPressed: true,
                                 post: item,
                                 isReel: false,
                               );
                             },
                             onLongPressEnd: (_) {
-                              updateIsPressed(
+                              showFloatingPost(
                                 isPressed: false,
                                 post: item,
                                 isReel: false,
@@ -101,14 +101,14 @@ class FypRow extends StatelessWidget {
                 padding: const EdgeInsets.all(1),
                 child: GestureDetector(
                   onLongPress: () {
-                    updateIsPressed(
+                    showFloatingPost(
                       isPressed: true,
                       post: rowData[4],
                       isReel: true,
                     );
                   },
                   onLongPressEnd: (_) {
-                    updateIsPressed(
+                    showFloatingPost(
                       isPressed: false,
                       post: rowData[4],
                       isReel: true,

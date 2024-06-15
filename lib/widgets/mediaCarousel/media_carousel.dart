@@ -56,7 +56,7 @@ class _MediaCarouselState extends State<MediaCarousel>
             controller: _pageViewController,
             onPageChanged: _handleSwipe,
             children: [
-              ...widget.imgList.map((e) => Image.asset(e, fit: BoxFit.cover)),
+              ...widget.imgList.map((e) => Image.asset(e, fit: BoxFit.contain)),
             ],
           ),
         ),
