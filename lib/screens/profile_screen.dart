@@ -10,7 +10,7 @@ class ProfileScreen extends StatelessWidget {
       const TextStyle(fontWeight: FontWeight.w500, fontSize: 16);
   @override
   Widget build(BuildContext context) {
-    final Color _borderColor = Theme.of(context).brightness == Brightness.dark
+    final Color borderColor = Theme.of(context).brightness == Brightness.dark
         ? Colors.white
         : Colors.black;
     return Scaffold(
@@ -131,7 +131,7 @@ class ProfileScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white24
-                          : Colors.black,
+                          : Colors.black12,
                       borderRadius: const BorderRadius.all(Radius.circular(6)),
                     ),
                     child: const Center(
@@ -152,7 +152,7 @@ class ProfileScreen extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          border: Border.all(color: _borderColor),
+                          border: Border.all(color: borderColor),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(99999)),
                         ),
@@ -178,7 +178,7 @@ class ProfileScreen extends StatelessWidget {
                         border: Border(
                             bottom: BorderSide(
                           width: 0.2,
-                          color: _borderColor,
+                          color: borderColor,
                         )),
                       ),
                       child: Center(

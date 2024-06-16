@@ -32,9 +32,11 @@ class FloatingPost extends StatelessWidget {
                           : constraints.maxHeight * 0.8,
                     ),
                     child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.black87
+                            : Colors.white,
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(8),
                         ),
                       ),

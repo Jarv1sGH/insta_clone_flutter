@@ -12,7 +12,7 @@ class PostOptions extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    final Color _borderColor = Theme.of(context).brightness == Brightness.dark
+    final Color borderColor = Theme.of(context).brightness == Brightness.dark
         ? Colors.white
         : Colors.black;
     return Column(
@@ -28,7 +28,7 @@ class PostOptions extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(width: 0.1, color: _borderColor),
+              bottom: BorderSide(width: 0.1, color: borderColor),
             ),
           ),
           child: Row(
@@ -36,12 +36,12 @@ class PostOptions extends StatelessWidget {
               PostOptionIcon(
                 icon: CustomIcons.save,
                 iconText: 'Save',
-                borderColor: _borderColor,
+                borderColor: borderColor,
               ),
               PostOptionIcon(
                 icon: Icons.qr_code_scanner,
                 iconText: 'QR code',
-                borderColor: _borderColor,
+                borderColor: borderColor,
               ),
             ],
           ),
@@ -49,7 +49,7 @@ class PostOptions extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(width: 0.05, color: _borderColor),
+              bottom: BorderSide(width: 0.05, color: borderColor),
             ),
           ),
           child: Column(

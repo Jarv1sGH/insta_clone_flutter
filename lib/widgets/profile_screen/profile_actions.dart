@@ -18,7 +18,7 @@ class ProfileActions extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Colors.white24
-                    : Colors.black,
+                    : Colors.black12,
                 border: Border.all(width: 0),
                 borderRadius: const BorderRadius.all(Radius.circular(6)),
               ),

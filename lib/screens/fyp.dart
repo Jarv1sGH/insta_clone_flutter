@@ -27,14 +27,20 @@ class ForYouScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.black12,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white12
+                          : Colors.black12,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    child: const TextField(
+                    child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Search',
-                        hintStyle: TextStyle(color: Colors.black38),
-                        prefixIcon: Icon(Icons.search),
+                        hintStyle: TextStyle(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black38,
+                        ),
+                        prefixIcon: const Icon(Icons.search),
                         border: InputBorder.none,
                       ),
                     ),
