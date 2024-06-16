@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 
-class Story extends StatelessWidget {
-  const Story({super.key, required this.index});
-  final int index;
+class UserStory extends StatelessWidget {
+  const UserStory({super.key});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,15 +17,6 @@ class Story extends StatelessWidget {
                 height: 90,
                 width: 90,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [
-                      Colors.yellowAccent,
-                      Colors.red,
-                      Colors.purple,
-                    ],
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.centerRight,
-                  ),
                   borderRadius: BorderRadius.circular(999),
                 ),
               ),
@@ -35,7 +25,6 @@ class Story extends StatelessWidget {
                 width: 83,
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primaryContainer,
-                  // color: Colors.white,
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Center(
@@ -53,10 +42,29 @@ class Story extends StatelessWidget {
                   ),
                 ),
               ),
+              Positioned(
+                bottom: 6,
+                right: 4,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  decoration: BoxDecoration(
+                      color: Colors.blue[400],
+                      border: Border.all(color: Colors.white, width: 2),
+                      borderRadius: BorderRadius.circular(9999)),
+                  child: const Center(
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 2),
-          const Text('auroramusic'),
+          const Text('user'),
         ],
       ),
     );

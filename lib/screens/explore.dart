@@ -19,7 +19,10 @@ class Explore extends StatelessWidget {
       body: ListView.builder(
           itemCount: explorePosts.length,
           itemBuilder: (context, index) {
-            return Post(post: explorePosts[index]);
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Post(post: explorePosts[index]),
+            );
           }),
     );
   }

@@ -15,9 +15,12 @@ class ProfileActions extends StatelessWidget {
             onTap: () {},
             child: Container(
               height: 30,
-              decoration: const BoxDecoration(
-                color: Colors.black12,
-                borderRadius: BorderRadius.all(Radius.elliptical(8, 8)),
+              decoration: BoxDecoration(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white24
+                    : Colors.black,
+                border: Border.all(width: 0),
+                borderRadius: const BorderRadius.all(Radius.circular(6)),
               ),
               child: Center(
                 child: Text(actionName),

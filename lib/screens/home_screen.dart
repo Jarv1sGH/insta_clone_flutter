@@ -4,6 +4,7 @@ import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/widgets/Post/post.dart';
 import 'package:insta_clone/widgets/story.dart';
 import 'package:insta_clone/data/post_data.dart';
+import 'package:insta_clone/widgets/user_story.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -41,12 +42,15 @@ class HomeScreen extends StatelessWidget {
               ),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(
+                child: Row(children: [
+                  const UserStory(),
+                  ...List.generate(
                     10,
-                    (index) => const Story(),
+                    (index) => Story(
+                      index: index,
+                    ),
                   ),
-                ),
+                ]),
               ),
             ),
           ),

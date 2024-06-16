@@ -33,51 +33,42 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Color iconColor = Theme.of(context).brightness == Brightness.dark
+        ? Colors.white
+        : Colors.black;
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Icon(
-                Icons.home_filled,
-                color: Colors.black,
-              ),
+              padding: const EdgeInsets.only(top: 10),
+              child: Icon(Icons.home_filled, color: iconColor),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Icon(
-                Icons.search,
-                color: Colors.black,
-              ),
+              padding: const EdgeInsets.only(top: 10),
+              child: Icon(Icons.search, color: iconColor),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Icon(
-                CustomIcons.addSquare,
-                color: Colors.black,
-              ),
+              padding: const EdgeInsets.only(top: 10),
+              child: Icon(CustomIcons.addSquare, color: iconColor),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Icon(
-                CustomIcons.reels,
-                color: Colors.black,
-              ),
+              padding: const EdgeInsets.only(top: 10),
+              child: Icon(CustomIcons.reels, color: iconColor),
             ),
             label: '',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.only(top: 10),
               child: ProfilePicture(

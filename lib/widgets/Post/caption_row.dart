@@ -37,16 +37,24 @@ class CaptionRow extends StatelessWidget {
                     onTap: () {},
                     child: InkWell(
                       onTap: showComments,
-                      child: const Text(
+                      child: Text(
                         'View all comments',
-                        style: TextStyle(color: Colors.black54),
+                        style: TextStyle(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black54,
+                        ),
                       ),
                     )),
                 InkWell(
                   onTap: () {},
                   child: Text(
                     time,
-                    style: const TextStyle(color: Colors.black54),
+                    style: TextStyle(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black54,
+                    ),
                   ),
                 ),
               ],

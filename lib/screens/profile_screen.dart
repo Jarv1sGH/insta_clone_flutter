@@ -7,9 +7,12 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   final TextStyle profileTextStyle =
-      const TextStyle(fontWeight: FontWeight.w500);
+      const TextStyle(fontWeight: FontWeight.w500, fontSize: 16);
   @override
   Widget build(BuildContext context) {
+    final Color _borderColor = Theme.of(context).brightness == Brightness.dark
+        ? Colors.white
+        : Colors.black;
     return Scaffold(
         body: SafeArea(
       child: SingleChildScrollView(
@@ -87,7 +90,10 @@ class ProfileScreen extends StatelessWidget {
                           flex: 1,
                           child: Column(
                             children: [
-                              Text('0', style: profileTextStyle),
+                              Text(
+                                '0',
+                                style: profileTextStyle,
+                              ),
                               Text(
                                   index == 0
                                       ? 'posts'
@@ -122,9 +128,11 @@ class ProfileScreen extends StatelessWidget {
                   child: Container(
                     width: 40,
                     height: 30,
-                    decoration: const BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.all(Radius.elliptical(8, 8)),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white24
+                          : Colors.black,
+                      borderRadius: const BorderRadius.all(Radius.circular(6)),
                     ),
                     child: const Center(
                       child: Icon(Icons.person_add),
@@ -144,7 +152,7 @@ class ProfileScreen extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          border: Border.all(),
+                          border: Border.all(color: _borderColor),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(99999)),
                         ),
@@ -166,8 +174,12 @@ class ProfileScreen extends StatelessWidget {
                 return Expanded(
                     flex: 1,
                     child: Container(
-                      decoration: const BoxDecoration(
-                        border: Border(bottom: BorderSide(width: 0.2)),
+                      decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                          width: 0.2,
+                          color: _borderColor,
+                        )),
                       ),
                       child: Center(
                           child: Padding(
