@@ -21,7 +21,8 @@ class PostOptions extends StatelessWidget {
           width: double.infinity,
           child: Center(
               child: Icon(
-            Icons.horizontal_rule_rounded,
+            CustomIcons.divider,
+            // Icons.horizontal_rule_rounded,
             size: 50,
           )),
         ),

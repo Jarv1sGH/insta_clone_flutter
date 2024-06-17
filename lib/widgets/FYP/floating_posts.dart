@@ -34,7 +34,7 @@ class FloatingPost extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.black87
+                            ? Colors.black
                             : Colors.white,
                         borderRadius: const BorderRadius.all(
                           Radius.circular(8),

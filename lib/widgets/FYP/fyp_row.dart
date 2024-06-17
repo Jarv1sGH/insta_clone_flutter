@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/models/post_model.dart';
 import 'package:insta_clone/screens/explore.dart';
 import 'package:insta_clone/screens/reels_screen.dart';
@@ -81,11 +82,11 @@ class FypRow extends StatelessWidget {
                           ),
                           if (item.media.length > 1)
                             const Positioned(
-                                top: 4,
-                                right: 4,
+                                top: 2,
+                                right: 0,
                                 child: Icon(
-                                  Icons.copy_outlined,
-                                  size: 16,
+                                  CustomIcons.posts,
+                                  size: 24,
                                   color: Colors.white,
                                 )),
                         ],

@@ -45,8 +45,8 @@ class ProfileScreen extends StatelessWidget {
                 IconButton(
                     onPressed: () {},
                     icon: const Icon(
-                      Icons.menu,
-                      size: 28,
+                      CustomIcons.hamburger,
+                      size: 22,
                     )),
               ],
             ),

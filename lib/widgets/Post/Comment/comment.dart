@@ -19,6 +19,7 @@ class _CommentState extends State<Comment> with SingleTickerProviderStateMixin {
   late Animation<double> _likeScaleAnimation;
   bool _isLiked = false;
   int _numOfLikes = 0;
+
   @override
   void initState() {
     _numOfLikes = widget.comment.numOfLikes;
@@ -76,7 +77,6 @@ class _CommentState extends State<Comment> with SingleTickerProviderStateMixin {
     return Padding(
       padding: const EdgeInsets.only(left: 0, right: 16, top: 8, bottom: 8),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -86,72 +86,73 @@ class _CommentState extends State<Comment> with SingleTickerProviderStateMixin {
               imagePath: widget.comment.profileImg,
             ),
           ),
-          InkWell(
-            onDoubleTap: _onCommentDoubleTap,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      widget.comment.username,
-                      style: const TextStyle(
-                          fontSize: 12, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      widget.comment.time,
-                      style: const TextStyle(
-                        color: Colors.black87,
-                        fontSize: 10,
+          Expanded(
+            child: InkWell(
+              onDoubleTap: _onCommentDoubleTap,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        widget.comment.username,
+                        style: const TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 280,
-                  child: Text(
-                    softWrap: true,
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        widget.comment.time,
+                        style: TextStyle(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black87,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
                     widget.comment.comment,
+                    softWrap: true,
                   ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Text(
-                  'Reply',
-                  style: TextStyle(
-                    fontSize: 11,
+                  const SizedBox(
+                    height: 5,
                   ),
-                ),
-              ],
+                  const Text(
+                    'Reply',
+                    style: TextStyle(
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          const Spacer(),
+          // const SizedBox(width: 16),
           Column(
             children: [
               InkWell(
-                  onTap: _commentLikeHandler,
-                  child: AnimatedBuilder(
-                      animation: _likeAnimationController,
-                      builder: (ctx, child) {
-                        return Transform.scale(
-                          scale: _likeScaleAnimation.value,
-                          child: Icon(
-                            _isLiked
-                                ? CustomIcons.heartSolid
-                                : CustomIcons.heart,
-                            color: _isLiked ? Colors.red : null,
-                            size: 18,
-                          ),
-                        );
-                      })),
+                onTap: _commentLikeHandler,
+                child: AnimatedBuilder(
+                  animation: _likeAnimationController,
+                  builder: (ctx, child) {
+                    return Transform.scale(
+                      scale: _likeScaleAnimation.value,
+                      child: Icon(
+                        _isLiked ? CustomIcons.heartSolid : CustomIcons.heart,
+                        color: _isLiked ? Colors.red : null,
+                        size: 18,
+                      ),
+                    );
+                  },
+                ),
+              ),
               Text(
                 _numOfLikes.toString(),
                 style: const TextStyle(fontSize: 11),
-              )
+              ),
             ],
           ),
         ],

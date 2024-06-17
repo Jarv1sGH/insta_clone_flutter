@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/custom_icons_icons.dart';
 import 'package:insta_clone/widgets/Post/Comment/comment.dart';
 import 'package:insta_clone/widgets/profile_picture.dart';
 import 'package:insta_clone/models/comment_model.dart';
@@ -85,7 +86,7 @@ class _CommentsState extends State<Comments>
             child: Column(
               children: [
                 Icon(
-                  Icons.horizontal_rule_rounded,
+                  CustomIcons.divider,
                   size: 50,
                 ),
                 Text(
